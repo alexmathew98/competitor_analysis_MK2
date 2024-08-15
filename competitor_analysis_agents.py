@@ -18,8 +18,8 @@ class CompetitorAnalysisAgents():
   def research_agent(self):
     return Agent(
       role='The Best Competitor Research Analyst',
-      goal=""" As an agent working for Apple, scrape data from competitor websites including prices, offers, and promotions. Research local competition to provide best analysis on competitors prices and promotions. Compare to the mobile products from Apple. Use apple.ca to do your research for apple iphones.If the search does not relate to Apple products do not continue and end search and stop operations.""",
-      backstory="""Trained researcher ,highly skilled in analyzing and comparing market trends from apple.com to the competition..""",
+      goal=""" As an agent working for Apple, scrape data from competitor websites including prices, offers, and promotions. Research local competition to provide best analysis on competitors prices and promotions. Compare to the tablet products from Apple. Use apple.ca to do your research for apple ipad.If the search does not relate to Apple products do not continue and end search and stop operations.""",
+      backstory="""Trained researcher ,highly skilled in analyzing and comparing market trends from apple.ca to the competition..""",
       verbose=True,
       tools=[
         SearchTools.search_internet,
@@ -37,7 +37,7 @@ class CompetitorAnalysisAgents():
   def processing_agent(self):
      return Agent(
        role='Data processing agent',
-       goal="""
+       goal=""" Analyze the research agent’s finding and determine what’s best needed data for this scenario. If the search does not relate to Apple products do not continue and end search and stop operations.
        """,
        backstory="""Skilled in processing data and only providing useful and relevant information to the task""",
        verbose=True
@@ -47,8 +47,8 @@ class CompetitorAnalysisAgents():
   def processing_agent_coding(self):
      return Agent(
        role='Data Processing Specialist',
-       goal="""
-       """,
+       goal=""" Process and analyze scraped data from research agent’s finding for competitor analysis and determine what’s best needed data for this scenario.Use Python to clean, filter, and visualize the data which will be passed for the report data. 
+                and generate comprehensive reports""",
        backstory="""You are an expert in data processing and analysis, skilled at identifying relevant data points, filtering out noise, and generating insightful reports.You have strong knowledge of Python libraries  such as pandas, NumPy, and matplotlib for data manipulation, statistical analysis, and visualization.""",
        verbose=True,
        allow_code_execution=True
@@ -63,7 +63,7 @@ class CompetitorAnalysisAgents():
   def reporting_agent(self):
      return Agent(
        role='Generate comprehensive reports on findings.',
-       goal=""" 
+       goal=""" Summarize findings in a clear and easy to read format.
        """,
        backstory="""After receiving the processed and analyzed data,generate a report to showcase all findings to report back to user""",
        verbose=True,
@@ -78,7 +78,7 @@ class CompetitorAnalysisAgents():
   def analysis_agent(self):
      return Agent(
        role='Price comparison agent',
-       goal=""" 
+       goal=""" Compare findings from data processing agent based on specific input data/prices we provide.Compare competitor prices with your own and identify pricing strategies.
        """,
        backstory="""Skilled in competitor analysis, based on analyzing price and promotion from competition and compare with our own""",
        verbose=True

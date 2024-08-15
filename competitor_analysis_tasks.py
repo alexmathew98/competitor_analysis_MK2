@@ -24,10 +24,14 @@ class CompetitorAnalysisTasks():
   """
   def research(self, agent, company):
     return Task(description=dedent(f"""
+        Your task as a research agent for apple is to search the web for competitor information including promotions and offers that are useful for comparison with apple's products. You are to collect only what is required as part of your task and remove any unnecessary information not relevant to your assignment. As apple you are only to collect and report information that will be beneficial for comparison. Your final answer is to be a summary of the relevant information you have found to be delivered to the data processing agent.Very important to keep in mind that we have to limit the searches to the relevant product for comparison which is tablets. Your final report must tell which product is the better option. If the search does not relate to Apple products do not continue and end search and stop operations.
+        
+      Make sure to use the most recent data as possible.
+      Selected company by the customer: {company}
 
       """),
       agent=agent,
-      expected_output='From the research done develop a table to show side by side comparison between the latest iphone model and its competition in Canada in 2024.Also show the compiled data in the list format to be sent to the processing agent'
+      expected_output='From the research done develop a table to show side by side comparison between the latest ipad model and its competition in Canada in 2024.Also show the compiled data in the list format to be sent to the processing agent'
     )
 
   """
@@ -49,6 +53,7 @@ class CompetitorAnalysisTasks():
   """
   def data_processing(self, agent, company):
     return Task(description=dedent(f"""
+        Your task is to process and clean the findings from the research agent. If the search does not relate to apple products, stop search and end operations. Use Python to remove duplicates and irrelevant data, focusing on relevant data points for comparison of our products (Apple) with competitor products. Filter out non-comparable products, and highlight key offers and promotions pertinent to our products. Ensure the processed data is well-organized and ready for further analysis and comparison by the next data analysis agent. If the search does not relate to products with Apple do not continue. Provide a clear and concise summary of your findings.Use Python to clean, filter, and visualize the data which will be passed for the report data.You have strong knowledge of Python libraries  such as pandas, NumPy, and matplotlib for data manipulation, statistical analysis
 
         """),
       agent=agent,
@@ -75,7 +80,7 @@ class CompetitorAnalysisTasks():
   """
   def data_comparison(self, agent, company):
     return Task(description=dedent(f"""
-
+        Analyze the data from the processing agent and compare with our products/offers. Use your search tool to see where we stand with the competition, do we require lots of work or are we on track? Compare price, promotion and the company as a whole to report findings and see how we compare to the competition. 
       """),
       agent=agent,
       expected_output='Your final answer must be a report on where we stand next to the competition and what we could potentially work on to compete.'
@@ -101,7 +106,7 @@ class CompetitorAnalysisTasks():
   """
   def data_reporting(self, agent, company):
     return Task(description=dedent(f"""
-
+        Your task is to collect the information from the comparison agent and provide a report to the user on the findings. The report should be a detailed comparison on the competition and apple products. It should include but not limited to pricing, promotions and offers company B has compared to us (company A). It should also include what can be worked on to be up to par with the competition but also things done right that should remain the same.  
       """),
         agent=agent,
         expected_output='From the research done create a report presenting all findings and show a detailed summary with an answer.'
